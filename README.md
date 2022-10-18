@@ -38,9 +38,9 @@ func main() {
 			Hostname: "main",
 			Config:   nil,
 			Route: []redfoxroute.RouteInterface{
-				routes.MainRoute{},
+				MainRoute{},
 			},
-		}
+		},
 	)
 
 	/**
@@ -86,16 +86,16 @@ func main() {
 			Hostname: "main",
 			Config:   nil,
 			Route: []redfoxroute.RouteInterface{
-				routes.MainRoute{},
+				MainRoute{},
 			},
 		},
 		redfoxroute.HostHandler{
 			Hostname: "user",
 			Config:   nil,
 			Route: []redfoxroute.RouteInterface{
-				routes.UserRoute{},
+				UserRoute{},
 			},
-		}
+		},
 	)
 
 	/**
@@ -118,7 +118,7 @@ func (mr MainRoute) Create(rp redfoxroute.RoutePathInterface) {
     rp.Any("/user/*", func(c echo.Context) (err error) {
 		req := c.Request()
 		res := c.Response()
-		host, err := routeExample.Host("user")
+		host, err := redfoxroute.Host("user")
 		if err != nil {
 			err = echo.ErrNotFound
 		} else {
@@ -140,7 +140,7 @@ type UserRoute struct {
 }
 
 func (mr UserRoute) Create(rp redfoxroute.RoutePathInterface) {
-	rp.Group("/user", func(rg routeExample.RoutePathInterface) {
+	rp.Group("/user", func(rg redfoxroute.RoutePathInterface) {
 		rg.Get("", User)
 	})
 }
