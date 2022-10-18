@@ -1,4 +1,4 @@
-# Route <sup style="font-size:0.4em">(Not done yet)</sup> <sub>by iamredfoxx 🦊</sub> 
+# Route <sup style="font-size:0.3em">(Not done yet)</sup> <sub>by iamredfoxx 🦊</sub> 
 
 <br>
 
@@ -136,10 +136,10 @@ func Home(c echo.Context) error {
  * User Route
  */
 
-type MainRoute struct {
+type UserRoute struct {
 }
 
-func (mr MainRoute) Create(rp redfoxroute.RoutePathInterface) {
+func (mr UserRoute) Create(rp redfoxroute.RoutePathInterface) {
 	rp.Group("/user", func(rg routeExample.RoutePathInterface) {
 		rg.Get("", User)
 	})
