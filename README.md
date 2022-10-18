@@ -72,7 +72,7 @@ package main
 import (
 	redfoxroute "github.com/iamaredfoxx/route"
 
-    "net/http"
+	"net/http"
 
 	"github.com/labstack/echo/v4"
 )
@@ -104,7 +104,6 @@ func main() {
 	redfoxroute.Bind("8080")
 }
 
-
 /**
  * Main Route
  */
@@ -115,7 +114,7 @@ type MainRoute struct {
 func (mr MainRoute) Create(rp redfoxroute.RoutePathInterface) {
 	rp.Get("", Home)
 
-    rp.Any("/user/*", func(c echo.Context) (err error) {
+	rp.Any("/*", func(c echo.Context) (err error) {
 		req := c.Request()
 		res := c.Response()
 		host, err := redfoxroute.Host("user")
@@ -139,7 +138,7 @@ func Home(c echo.Context) error {
 type UserRoute struct {
 }
 
-func (mr UserRoute) Create(rp redfoxroute.RoutePathInterface) {
+func (ur UserRoute) Create(rp redfoxroute.RoutePathInterface) {
 	rp.Group("/user", func(rg redfoxroute.RoutePathInterface) {
 		rg.Get("", User)
 	})
@@ -148,6 +147,5 @@ func (mr UserRoute) Create(rp redfoxroute.RoutePathInterface) {
 func User(c echo.Context) error {
 	return c.String(http.StatusOK, "User")
 }
-
 
 ```
