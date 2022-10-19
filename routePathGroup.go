@@ -12,6 +12,10 @@ func (r routePathGroup) Echo() *echo.Group {
 	return r.route.echo
 }
 
+func (r routePathGroup) Use(middleware ...echo.MiddlewareFunc) {
+	r.route.echo.Use(middleware...)
+}
+
 func (r routePathGroup) Group(groupName string, f func(rg RoutePathInterface), m ...echo.MiddlewareFunc) {
 	g := routePathGroup{route: &group{
 		host: r.route.host,
