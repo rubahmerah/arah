@@ -15,3 +15,7 @@ type RoutePathInterface interface {
 type RouteInterface interface {
 	Create(RoutePathInterface)
 }
+
+type StartInterface interface {
+	Start(e *echo.Echo)
+}

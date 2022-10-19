@@ -2,7 +2,6 @@ package route
 
 import (
 	"log"
-	"strings"
 )
 
 func Register(routeHandler ...HostHandler) error {
@@ -36,11 +35,11 @@ func Name(routeName string, params ...interface{}) (string, error) {
 	return routeLists.name(routeName, params...)
 }
 
-func Bind(port string) {
+func Bind(s StartInterface) {
 	host, err := hostLists.host(mainHost)
 	if err != nil {
 		log.Fatal(err)
 	}
 	echo := host.echo
-	log.Fatal(echo.Start(strings.Join([]string{":", port}, "")))
+	s.Start(echo)
 }
