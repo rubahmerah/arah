@@ -1,20 +1,25 @@
 package route
 
 import (
+	"errors"
 	"log"
 )
 
-func Register(routeHandler ...HostHandler) error {
-	for _, rh := range routeHandler {
-		err := hostLists.register(rh.Hostname, rh.Config)
+func Register(hostHandler ...HostHandler) error {
+	for _, hh := range hostHandler {
+		hostname := hh.Hostname
+		if hostname == "" {
+			hostname = defaultHost
+		}
+		err := hostLists.register(hostname, hh.Config)
 		if err != nil {
 			return err
 		}
-		host, err := hostLists.host(rh.Hostname)
+		host, err := hostLists.host(hostname)
 		if err != nil {
 			return err
 		}
-		for _, r := range rh.Route {
+		for _, r := range hh.Route {
 			routeSingle := routePathSingle{
 				route: &route{
 					host: host,
@@ -36,9 +41,9 @@ func Name(routeName string, params ...interface{}) (string, error) {
 }
 
 func Bind(s StartInterface) {
-	host, err := hostLists.host(mainHost)
+	host, err := hostLists.host(defaultHost)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(errors.New("default host not found"))
 	}
 	echo := host.echo
 	s.Start(echo)

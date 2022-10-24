@@ -1,3 +1,3 @@
 package route
 
-var mainHost = "main"
+const defaultHost = "default"
