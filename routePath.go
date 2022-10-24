@@ -2,6 +2,7 @@ package route
 
 import "github.com/labstack/echo/v4"
 
+// Route path
 type routePath struct {
 	host   *host
 	route  *echo.Route

@@ -11,10 +11,12 @@ var hostLists = &hostList{
 	map[string]*host{},
 }
 
+// List host
 type hostList struct {
 	hosts map[string]*host
 }
 
+// Register host
 func (hl *hostList) register(hostname string, config *HostConfiguration) error {
 	hostname = strings.ToLower(hostname)
 	h, _ := hl.host(hostname)
@@ -34,6 +36,7 @@ func (hl *hostList) register(hostname string, config *HostConfiguration) error {
 	return nil
 }
 
+// Get host by specified name
 func (hl *hostList) host(hostname string) (*host, error) {
 	h, isOk := hl.hosts[strings.ToLower(hostname)]
 	if !isOk {

@@ -2,6 +2,7 @@ package route
 
 import "github.com/labstack/echo/v4"
 
+// Route Path Implementation
 type RoutePathInterface interface {
 	Group(group string, f func(rg RoutePathInterface), m ...echo.MiddlewareFunc)
 	Get(prefix string, f echo.HandlerFunc, m ...echo.MiddlewareFunc) *routePath
@@ -12,10 +13,12 @@ type RoutePathInterface interface {
 	Any(prefix string, f echo.HandlerFunc, m ...echo.MiddlewareFunc) []*routePath
 }
 
+// Route Implementation
 type RouteInterface interface {
 	Create(RoutePathInterface)
 }
 
+// Start Implementation
 type StartInterface interface {
 	Start(e *echo.Echo)
 }

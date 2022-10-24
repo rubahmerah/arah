@@ -6,6 +6,7 @@ var routeLists = &routeList{
 	map[string]*host{},
 }
 
+// List route
 type routeList struct {
 	routes map[string]*host
 }

@@ -4,6 +4,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Route path single
 type routePathSingle struct {
 	route *route
 }

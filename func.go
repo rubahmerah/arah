@@ -5,6 +5,7 @@ import (
 	"log"
 )
 
+// Register the Host Handler
 func Register(hostHandler ...HostHandler) error {
 	for _, hh := range hostHandler {
 		hostname := hh.Hostname
@@ -32,18 +33,21 @@ func Register(hostHandler ...HostHandler) error {
 	return nil
 }
 
+// Return Host with specified name
 func Host(hostname string) (*host, error) {
 	return hostLists.host(hostname)
 }
 
+// Return Route Path with specified name
 func Name(routeName string, params ...interface{}) (string, error) {
 	return routeLists.name(routeName, params...)
 }
 
+// Bind Main Host into http and serve it
 func Bind(s StartInterface) {
 	host, err := hostLists.host(defaultHost)
 	if err != nil {
-		log.Fatal(errors.New("default host not found"))
+		log.Fatal(errors.New("default host does not found"))
 	}
 	echo := host.echo
 	s.Start(echo)

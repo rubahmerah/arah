@@ -7,12 +7,14 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// The host
 type host struct {
 	hostname string
 	echo     *echo.Echo
 	config   HostConfiguration
 }
 
+// Setup configuration for host
 func (r *host) prep() {
 	r.echo.HideBanner = r.config.HideBanner
 	r.echo.DisableHTTP2 = r.config.DisableHTTP2

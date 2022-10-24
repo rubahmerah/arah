@@ -4,6 +4,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Route Path Grouping
 type routePathGroup struct {
 	route *group
 }

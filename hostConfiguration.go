@@ -6,6 +6,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Host configuration
 type HostConfiguration struct {
 	Debug            bool
 	HideBanner       bool

@@ -9,6 +9,7 @@ import (
 	"golang.org/x/net/http2"
 )
 
+// Start HTTP
 type Start struct {
 	Port string
 }
@@ -19,6 +20,7 @@ func (s Start) Start(e *echo.Echo) {
 	}
 }
 
+// Start HTTP with TLS
 type StartTLS struct {
 	Port              string
 	CertFile, KeyFile interface{}
@@ -30,6 +32,7 @@ func (s StartTLS) Start(e *echo.Echo) {
 	}
 }
 
+// Start HTTP with auto creating TLS
 type StartAutoTLS struct {
 	Port string
 }
@@ -40,6 +43,7 @@ func (s StartAutoTLS) Start(e *echo.Echo) {
 	}
 }
 
+// Start HTTP 2
 type StartH2CServer struct {
 	Port  string
 	HTTP2 http2.Server
@@ -51,6 +55,7 @@ func (s StartH2CServer) Start(e *echo.Echo) {
 	}
 }
 
+// Start HTTP with custom configuration HTTP Server
 type StartServer struct {
 	Server http.Server
 }
