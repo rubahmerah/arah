@@ -11,6 +11,7 @@ type RoutePathInterface interface {
 	Patch(prefix string, f echo.HandlerFunc, m ...echo.MiddlewareFunc) *routePath
 	Delete(prefix string, f echo.HandlerFunc, m ...echo.MiddlewareFunc) *routePath
 	Any(prefix string, f echo.HandlerFunc, m ...echo.MiddlewareFunc) []*routePath
+	Use(middleware ...echo.MiddlewareFunc)
 }
 
 // Route Implementation
