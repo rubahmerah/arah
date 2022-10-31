@@ -1,3 +1,3 @@
-package route
+package arah
 
 const defaultHost = "default"

@@ -1,4 +1,4 @@
-module github.com/iamaredfoxx/route
+module github.com/iamaredfoxx/arah
 
 go 1.19
 

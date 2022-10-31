@@ -1,7 +1,6 @@
-package route
+package arah
 
 import (
-	"errors"
 	"log"
 )
 
@@ -47,7 +46,7 @@ func Name(routeName string, params ...interface{}) (string, error) {
 func Bind(s StartInterface) {
 	host, err := hostLists.host(defaultHost)
 	if err != nil {
-		log.Fatal(errors.New("default host does not found"))
+		log.Fatal(DefaultHostNotFound{})
 	}
 	echo := host.echo
 	s.Start(echo)

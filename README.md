@@ -1,4 +1,4 @@
-# Route <sup style="font-size:0.3em">(Not done yet)</sup> <sub>by iamredfoxx 🦊</sub> 
+# Route <sup style="font-size:0.3em">(Not done yet)</sup> <sub>by 🦊</sub> 
 
 <br>
 

@@ -1,9 +1,6 @@
-package route
+package arah
 
 import (
-	"errors"
-	"strings"
-
 	"github.com/labstack/echo/v4"
 )
 
@@ -18,10 +15,9 @@ type hostList struct {
 
 // Register host
 func (hl *hostList) register(hostname string, config *HostConfiguration) error {
-	hostname = strings.ToLower(hostname)
 	h, _ := hl.host(hostname)
 	if h != nil {
-		return errors.New("host already defined: " + hostname)
+		return HostAlreadyDefined{hostname}
 	}
 	h = &host{
 		hostname: hostname,
@@ -38,9 +34,9 @@ func (hl *hostList) register(hostname string, config *HostConfiguration) error {
 
 // Get host by specified name
 func (hl *hostList) host(hostname string) (*host, error) {
-	h, isOk := hl.hosts[strings.ToLower(hostname)]
+	h, isOk := hl.hosts[hostname]
 	if !isOk {
-		return nil, errors.New("host not found")
+		return nil, HostAlreadyDefined{hostname}
 	}
 	return h, nil
 }
