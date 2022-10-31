@@ -17,5 +17,6 @@ type HostConfiguration struct {
 	Validator        *echo.Validator
 	Binder           *echo.Binder
 	Renderer         *echo.Renderer
+	IPExtractor      *echo.IPExtractor
 	HTTPErrorHandler func(err error, c echo.Context)
 }

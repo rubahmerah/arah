@@ -31,6 +31,11 @@ func (r *host) prep() {
 	if listener != nil {
 		r.echo.Listener = *listener
 	}
+
+	ipextractor := r.config.IPExtractor
+	if ipextractor != nil {
+		r.echo.IPExtractor = *ipextractor
+	}
 }
 
 func (h *host) ServeHTTP(res *echo.Response, req *http.Request) {
