@@ -13,10 +13,10 @@ type HostConfiguration struct {
 	DisableHTTP2     bool
 	ReadTimeout      int64
 	WriteTimeout     int64
-	Listener         *net.Listener
-	Validator        *echo.Validator
-	Binder           *echo.Binder
-	Renderer         *echo.Renderer
-	IPExtractor      *echo.IPExtractor
+	Listener         net.Listener
+	Validator        echo.Validator
+	Binder           echo.Binder
+	Renderer         echo.Renderer
+	IPExtractor      echo.IPExtractor
 	HTTPErrorHandler func(err error, c echo.Context)
 }

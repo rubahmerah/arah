@@ -23,19 +23,13 @@ func (r *host) prep() {
 	r.echo.Server.WriteTimeout = time.Duration(r.config.WriteTimeout)
 
 	validator := r.config.Validator
-	if validator != nil {
-		r.echo.Validator = *validator
-	}
+	r.echo.Validator = validator
 
 	listener := r.config.Listener
-	if listener != nil {
-		r.echo.Listener = *listener
-	}
+	r.echo.Listener = listener
 
 	ipextractor := r.config.IPExtractor
-	if ipextractor != nil {
-		r.echo.IPExtractor = *ipextractor
-	}
+	r.echo.IPExtractor = ipextractor
 }
 
 func (h *host) ServeHTTP(res *echo.Response, req *http.Request) {
