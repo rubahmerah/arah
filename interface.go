@@ -21,5 +21,5 @@ type RouteInterface interface {
 
 // Start Implementation
 type StartInterface interface {
-	Start(e *echo.Echo)
+	Start(e *echo.Echo) error
 }

@@ -1,9 +1,5 @@
 package arah
 
-import (
-	"log"
-)
-
 // Register the Host Handler
 func Register(hostHandler ...HostHandler) error {
 	for _, hh := range hostHandler {
@@ -43,11 +39,12 @@ func Name(routeName string, params ...interface{}) (string, error) {
 }
 
 // Bind Main Host into http and serve it
-func Bind(s StartInterface) {
+func Bind(s StartInterface) error {
 	host, err := hostLists.host(defaultHost)
 	if err != nil {
-		log.Fatal(DefaultHostNotFound{})
+		return err
 	}
 	echo := host.echo
 	s.Start(echo)
+	return nil
 }
