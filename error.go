@@ -1,26 +1,28 @@
 package arah
 
-import "fmt"
+import (
+	"errors"
+)
 
-type DefaultHostNotFound struct {
+var (
+	ErrorDefaultHostNotFound = errors.New("default host not found")
+	ErrorHostNotFound        = errors.New("host not found")
+	ErrorHostAlreadyDefined  = errors.New("host already defined")
+	ErrorRouteNotFound       = errors.New("route not found")
+)
+
+func IsDefaultHostNotFound(err error) bool {
+	return err == ErrorDefaultHostNotFound
 }
 
-func (DefaultHostNotFound) Error() string {
-	return "Default Host not found"
+func IsHostNotFound(err error) bool {
+	return err == ErrorHostNotFound
 }
 
-type HostNotFound struct {
-	Hostname string
+func IsHostAlreadyDefined(err error) bool {
+	return err == ErrorHostAlreadyDefined
 }
 
-func (h HostNotFound) Error() string {
-	return fmt.Sprintf("Host already defined: %s", h.Hostname)
-}
-
-type HostAlreadyDefined struct {
-	Hostname string
-}
-
-func (d HostAlreadyDefined) Error() string {
-	return fmt.Sprintf("Host already defined: %s", d.Hostname)
+func IsRouteNotFound(err error) bool {
+	return err == ErrorRouteNotFound
 }

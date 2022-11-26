@@ -42,7 +42,7 @@ func Name(routeName string, params ...interface{}) (string, error) {
 func Bind(s StartInterface) error {
 	host, err := hostLists.host(defaultHost)
 	if err != nil {
-		return err
+		return ErrorDefaultHostNotFound
 	}
 	echo := host.echo
 	s.Start(echo)

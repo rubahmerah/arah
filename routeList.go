@@ -1,7 +1,5 @@
 package arah
 
-import "errors"
-
 var routeLists = &routeList{
 	map[string]*host{},
 }
@@ -14,7 +12,7 @@ type routeList struct {
 func (rl *routeList) name(route string, params ...interface{}) (string, error) {
 	r, isOk := rl.routes[route]
 	if !isOk {
-		return "", errors.New("Route not found")
+		return "", ErrorRouteNotFound
 	}
 	return r.echo.Reverse(route, params...), nil
 }

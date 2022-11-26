@@ -17,7 +17,7 @@ type hostList struct {
 func (hl *hostList) register(hostname string, config *HostConfiguration) error {
 	h, _ := hl.host(hostname)
 	if h != nil {
-		return HostAlreadyDefined{hostname}
+		return ErrorHostAlreadyDefined
 	}
 	h = &host{
 		hostname: hostname,
@@ -36,7 +36,7 @@ func (hl *hostList) register(hostname string, config *HostConfiguration) error {
 func (hl *hostList) host(hostname string) (*host, error) {
 	h, isOk := hl.hosts[hostname]
 	if !isOk {
-		return nil, HostAlreadyDefined{hostname}
+		return nil, ErrorHostNotFound
 	}
 	return h, nil
 }
