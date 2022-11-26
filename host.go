@@ -16,6 +16,7 @@ type host struct {
 
 // Setup configuration for host
 func (r *host) prep() {
+
 	r.echo.HideBanner = r.config.HideBanner
 	r.echo.DisableHTTP2 = r.config.DisableHTTP2
 	r.echo.Debug = r.config.Debug
@@ -30,6 +31,10 @@ func (r *host) prep() {
 
 	ipextractor := r.config.IPExtractor
 	r.echo.IPExtractor = ipextractor
+
+	md := r.config.Middleware
+	r.echo.Use(md...)
+
 }
 
 func (h *host) ServeHTTP(res *echo.Response, req *http.Request) {

@@ -18,5 +18,6 @@ type HostConfiguration struct {
 	Binder           echo.Binder
 	Renderer         echo.Renderer
 	IPExtractor      echo.IPExtractor
+	Middleware       []echo.MiddlewareFunc
 	HTTPErrorHandler func(err error, c echo.Context)
 }
