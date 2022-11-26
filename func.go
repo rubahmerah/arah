@@ -38,7 +38,7 @@ func Name(routeName string, params ...interface{}) (string, error) {
 	return routeLists.name(routeName, params...)
 }
 
-// Bind Main Host into http and serve it
+// Bind Default Host into http and serve it
 func Bind(s StartInterface) error {
 	host, err := hostLists.host(defaultHost)
 	if err != nil {
