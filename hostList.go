@@ -26,7 +26,6 @@ func (hl *hostList) register(hostname string, config *HostConfiguration) error {
 	if config != nil {
 		h.config = *config
 	}
-	h.config.HideBanner = true
 	h.prep()
 	hl.hosts[hostname] = h
 	return nil
