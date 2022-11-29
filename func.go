@@ -45,6 +45,9 @@ func Bind(s StartInterface) error {
 		return ErrorDefaultHostNotFound
 	}
 	echo := host.echo
-	s.Start(echo)
+	err = s.Start(echo)
+	if err != nil {
+		return err
+	}
 	return nil
 }
